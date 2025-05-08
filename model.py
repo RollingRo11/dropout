@@ -75,22 +75,10 @@ class DropoutModel:
 
     #
     def generate_names(self, num_names=10):
-        test_model = Sequential(
-            [
-                Embedding(self.vocab_size, self.n_embd),
-                Dropout(training_mode=False),
-                Linear(self.n_embd, self.n_hidden, bias=False),
-                Tanh(),
-                Dropout(training_mode=False),
-                Linear(self.n_hidden, self.n_hidden, bias=False),
-                Tanh(),
-                Dropout(training_mode=False),
-                Linear(self.n_hidden, self.n_hidden, bias=False),
-                Tanh(),
-                Dropout(training_mode=False),
-                Linear(self.n_hidden, self.vocab_size, scale=0.1),
-            ]
-        )
+        test_model = self.model
+        for layer in test_model.layers:
+            if isinstance(layer, Dropout):
+                layer.training = False
         generated_names = []
 
         for _ in range(num_names):
@@ -100,9 +88,7 @@ class DropoutModel:
                 x = torch.tensor([context])
                 logits = self.model(x)
                 logits = logits.squeeze(0)
-                print(logits.shape)
                 probs = F.softmax(logits, dim=1)
-                print(probs.shape)
 
                 ix = torch.multinomial(probs, num_samples=1).item()
 

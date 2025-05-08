@@ -90,6 +90,7 @@ class Dropout:
             self.mask = torch.rand(x.shape) < self.p
             self.out = x * self.mask / self.p
         else:
+            # (f"training mode enabled: {self.training}")
             self.out = x
         return self.out
 
