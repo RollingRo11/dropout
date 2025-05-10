@@ -3,6 +3,8 @@ Python implementation of "Dropout: A Simple Way to Prevent Neural Networks from 
 
 Read the paper [here!](https://jmlr.org/papers/v15/srivastava14a.html)
 
+(A large amount of this code was inspired by networks built in Andrej Karpathy's [makemore series](https://karpathy.ai/zero-to-hero.html))
+
 ## Paper implementation overview
 
 Hinton et al. describe dropout as the idea of randomly dropping $(1 - p)$ percent of units in the network, to prevent networks from learning too much from specificities of the dataset (co-adapting), where $p$ is the probability (from 0 to 1) that a neuron/unit is kept in the network. This also boasts training efficiency benefits and forces more neurons to "strengthen" when learning through optimization
