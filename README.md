@@ -36,4 +36,7 @@ class Dropout:
         return []
 ```
 
-The authors of the paper regularize outputs by multiplying weights by $p$, but in production, it is more typical to implement inverse dropout (`self.out = x * self.mask / self.p`). The devision by `self.p` returns the shape of the output to what the shape of the input was, which is important since the shape of the values passed through the layer are bound to change when dropping out random neurons.
+The authors of the paper regularize outputs by multiplying weights by $p$, but in production, it is more typical to implement inverse dropout (`self.out = x * self.mask / self.p`).
+
+> [!note] Important!
+> The devision by `self.p` returns the shape of the output to what the shape of the input was, which is important since the shape of the values passed through the layer are bound to change when dropping out random neurons.
