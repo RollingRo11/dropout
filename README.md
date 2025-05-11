@@ -1,5 +1,5 @@
 # dropout
-Python implementation of "Dropout: A Simple Way to Prevent Neural Networks from Overfitting" (Hinton et al.))
+Python implementation of "Dropout: A Simple Way to Prevent Neural Networks from Overfitting" (Hinton et al.)
 
 Read the paper [here!](https://jmlr.org/papers/v15/srivastava14a.html)
 
